@@ -1,3 +1,0 @@
-{"time": "2026-06-14 09:59:56", "level": "INFO", "module": "db", "msg": "default admin user created"}
-{"time": "2026-06-14 09:59:56", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
-{"time": "2026-06-14 09:59:57", "level": "INFO", "module": "server", "msg": "started on port 8822", "port": 8822}

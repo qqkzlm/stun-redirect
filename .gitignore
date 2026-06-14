@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.log
+*.err
+*.db
+deploy.py
+start.sh

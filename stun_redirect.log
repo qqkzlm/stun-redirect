@@ -1,4 +1,0 @@
-{"time": "2026-06-14 09:45:43", "level": "INFO", "module": "db", "msg": "default admin user created"}
-{"time": "2026-06-14 09:45:43", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
-{"time": "2026-06-14 09:45:44", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
-{"time": "2026-06-14 09:45:54", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "192.168.68.89", "path": "/api/rules", "method": "GET"}
