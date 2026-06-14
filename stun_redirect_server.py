@@ -241,14 +241,15 @@ def get_current_user(headers):
 
 # ─── Redirect Server Manager ──────────────────────────────────────────────
 class RedirectTarget:
-    __slots__ = ('ip', 'port', 'host', 'scheme', 'method', 'cache_seconds')
-    def __init__(self, ip='', port=0, host='', scheme='http', method='307', cache_seconds=300):
+    __slots__ = ('ip', 'port', 'host', 'scheme', 'method', 'cache_seconds', 'domain_prefix')
+    def __init__(self, ip='', port=0, host='', scheme='http', method='307', cache_seconds=300, domain_prefix=''):
         self.ip = ip
         self.port = port
         self.host = host
         self.scheme = scheme
         self.method = method
         self.cache_seconds = cache_seconds
+        self.domain_prefix = domain_prefix
 
 def parse_domain(hostname, root_domain):
     """解析域名前缀和端口: sp.50001.stun.sd8.cc -> (sp, 50001)"""
@@ -267,6 +268,18 @@ def parse_domain(hostname, root_domain):
         return None, None
     return prefix, port
 
+def _normalize_domain(entry):
+    entry = entry.strip()
+    for p in ('https://', 'http://'):
+        if entry.startswith(p):
+            entry = entry[len(p):]
+    ci = entry.find(':')
+    if ci > 0:
+        entry = entry[:ci]
+    if entry.endswith('/'):
+        entry = entry[:-1]
+    return entry
+
 _redirect_servers = {}
 
 class RedirectHandler(BaseHTTPRequestHandler):
@@ -276,7 +289,17 @@ class RedirectHandler(BaseHTTPRequestHandler):
         client_ip = self.client_address[0]
         if t and ((t.host and t.port) or (t.ip and t.port)):
             if t.host:
-                dest = f'{t.scheme}://{t.host}:{t.port}{self.path}'
+                h = t.host
+                if '*' in h:
+                    host_raw = self.headers.get('Host', '')
+                    hostname = host_raw.split(':')[0].lower() if ':' in host_raw else host_raw.lower()
+                    root_domain = get_setting('root_domain', '')
+                    prefix, _ = parse_domain(hostname, root_domain)
+                    if not prefix:
+                        prefix = t.domain_prefix or ''
+                    if prefix:
+                        h = h.replace('*', prefix)
+                dest = f'{t.scheme}://{h}:{t.port}{self.path}'
             else:
                 dest = f'http://{t.ip}:{t.port}{self.path}'
             code = 308 if t.method == '308' else 307
@@ -302,13 +325,13 @@ class RedirectHandler(BaseHTTPRequestHandler):
         pass
     do_GET = do_POST = do_PUT = do_DELETE = do_PATCH = do_HEAD = do_OPTIONS = _r
 
-def start_redirect_server(port, ip='', port_num=0, host='', scheme='http', method='307', cache_seconds=300, proxy_mode=0):
+def start_redirect_server(port, ip='', port_num=0, host='', scheme='http', method='307', cache_seconds=300, proxy_mode=0, domain_prefix=''):
     if proxy_mode:
         return True
     if port in _redirect_servers:
         return True
     try:
-        target = RedirectTarget(ip, port_num, host, scheme, method, cache_seconds)
+        target = RedirectTarget(ip, port_num, host, scheme, method, cache_seconds, domain_prefix)
         handler = type('_RedirectHandler', (RedirectHandler,), {'target': target})
         srv = HTTPServer(('0.0.0.0', port), handler)
         srv.daemon = True
@@ -350,7 +373,7 @@ def load_all_rules():
     conn.close()
     loaded = 0
     for r in rows:
-        if start_redirect_server(r['listen_port'], r['target_ip'], r['target_port'], r['host'] or '', r['redirect_scheme'] or 'http', r['redirect_method'] or '308', r['cache_seconds'] or 300, proxy_mode=r['proxy_mode']):
+        if start_redirect_server(r['listen_port'], r['target_ip'], r['target_port'], r['host'] or '', r['redirect_scheme'] or 'http', r['redirect_method'] or '308', r['cache_seconds'] or 300, proxy_mode=r['proxy_mode'], domain_prefix=r['domain_prefix'] or ''):
             loaded += 1
     log('INFO', 'redirect_mgr', f'loaded {loaded} redirect rules from db')
     sync_nginx_routes()
@@ -384,10 +407,17 @@ def sync_nginx_routes():
                 for line in mappings.split('\n'):
                     line = line.strip()
                     if not line: continue
+                    line = _normalize_domain(line)
                     parts = line.split(None, 1)
                     if len(parts) == 2 and parts[0] == prefix:
                         backend = f'{scheme}://{parts[1]}:{target_port}'
                         break
+                    if len(parts) == 1:
+                        domain = parts[0]
+                        dot = domain.find('.')
+                        if dot > 0 and domain[:dot] == prefix:
+                            backend = f'{scheme}://{domain}:{target_port}'
+                            break
             if not backend and r['host']:
                 backend = f'{scheme}://{r["host"].replace("*", prefix)}:{target_port}'
         if not backend:
@@ -460,6 +490,9 @@ class MainHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-Type', 'text/html; charset=utf-8')
         self.send_header('Content-Length', str(len(body)))
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
         self.send_header('Connection', 'close')
         self.end_headers()
         self.wfile.write(body)
@@ -549,11 +582,19 @@ class MainHandler(BaseHTTPRequestHandler):
             for line in mappings.split('\n'):
                 line = line.strip()
                 if not line: continue
+                line = _normalize_domain(line)
                 parts = line.split(None, 1)
                 if len(parts) == 2 and parts[0] == prefix:
                     dest_host = parts[1]
                     mapping_matched = True
                     break
+                if len(parts) == 1:
+                    domain = parts[0]
+                    dot = domain.find('.')
+                    if dot > 0 and domain[:dot] == prefix:
+                        dest_host = domain
+                        mapping_matched = True
+                        break
         if not dest_host and host_tpl:
             dest_host = host_tpl.replace('*', prefix)
         if dest_host:
@@ -701,7 +742,8 @@ class MainHandler(BaseHTTPRequestHandler):
                     scheme=data.get('redirect_scheme', existing['redirect_scheme'] or 'http'),
                     method=data.get('redirect_method', existing['redirect_method'] or '308'),
                     cache_seconds=int(data.get('cache_seconds', existing['cache_seconds'] or 300)),
-                    proxy_mode=data.get('proxy_mode', existing['proxy_mode'] or 0))
+                    proxy_mode=data.get('proxy_mode', existing['proxy_mode'] or 0),
+                    domain_prefix=existing['domain_prefix'] or '')
                 self._log_api('create_rule_same_user_update', username=user, rule_id=existing['id'], listen_port=listen_port)
                 sync_nginx_routes()
                 self._send_json(200, {'message': '\u540c\u7528\u6237\u7aef\u53e3\u5df2\u66f4\u65b0\u539f\u89c4\u5219', 'id': existing['id']})
@@ -758,7 +800,7 @@ class MainHandler(BaseHTTPRequestHandler):
                 conn.execute(f"UPDATE redirect_rules SET {','.join(extra_fields)} WHERE id=?", extra_vals)
                 conn.commit()
             if data.get('enabled', 1):
-                start_redirect_server(listen_port, host=data.get('host', ''), scheme=data.get('redirect_scheme', 'http'), method=data.get('redirect_method', '308'), cache_seconds=int(data.get('cache_seconds', 300)), proxy_mode=data.get('proxy_mode', 0))
+                start_redirect_server(listen_port, host=data.get('host', ''), scheme=data.get('redirect_scheme', 'http'), method=data.get('redirect_method', '308'), cache_seconds=int(data.get('cache_seconds', 300)), proxy_mode=data.get('proxy_mode', 0), domain_prefix=data.get('domain_prefix', ''))
             self._log_api('create_rule', username=user, rule_id=rule_id, fuwuqiportxuhao=fuwuqiportxuhao, listen_port=listen_port)
             sync_nginx_routes()
             self._send_json(200, {'message': '\u521b\u5efa\u6210\u529f', 'id': rule_id})
@@ -814,7 +856,7 @@ class MainHandler(BaseHTTPRequestHandler):
             fields.append('enabled=?')
             vals.append(1 if data['enabled'] else 0)
         if 'proxy_mode' in data:
-            if user['role'] != 'admin':
+            if role != 'admin':
                 self._send_json(403, {'error': '仅管理员可设置反向代理模式'})
                 return
             fields.append('proxy_mode=?')
@@ -827,7 +869,7 @@ class MainHandler(BaseHTTPRequestHandler):
         conn.close()
         if 'enabled' in data:
             if data['enabled']:
-                start_redirect_server(row['listen_port'], row['target_ip'], row['target_port'], row['host'] or '', row['redirect_scheme'] or 'http', row['redirect_method'] or '308', row['cache_seconds'] or 300, proxy_mode=row['proxy_mode'])
+                start_redirect_server(row['listen_port'], row['target_ip'], row['target_port'], row['host'] or '', row['redirect_scheme'] or 'http', row['redirect_method'] or '308', row['cache_seconds'] or 300, proxy_mode=row['proxy_mode'], domain_prefix=row['domain_prefix'] or '')
             else:
                 stop_redirect_server(row['listen_port'])
         self._log_api('update_rule', username=user, rule_id=rid, changes={k: data[k] for k in ('fuwuqiportxuhao', 'listen_port', 'host', 'redirect_scheme', 'redirect_method', 'cache_seconds', 'enabled', 'proxy_mode') if k in data})
@@ -879,7 +921,7 @@ class MainHandler(BaseHTTPRequestHandler):
         conn.commit()
         conn.close()
         if new_enabled:
-            start_redirect_server(row['listen_port'], row['target_ip'], row['target_port'], row['host'] or '', row['redirect_scheme'] or 'http', row['redirect_method'] or '308', row['cache_seconds'] or 300, proxy_mode=row['proxy_mode'])
+            start_redirect_server(row['listen_port'], row['target_ip'], row['target_port'], row['host'] or '', row['redirect_scheme'] or 'http', row['redirect_method'] or '308', row['cache_seconds'] or 300, proxy_mode=row['proxy_mode'], domain_prefix=row['domain_prefix'] or '')
         else:
             stop_redirect_server(row['listen_port'])
         self._log_api('toggle_rule', username=user, rule_id=rid, enabled=bool(new_enabled), fuwuqiportxuhao=row['fuwuqiportxuhao'])
@@ -1010,7 +1052,8 @@ class MainHandler(BaseHTTPRequestHandler):
                         scheme=redirect_scheme or 'http',
                         method=redirect_method or '308',
                         cache_seconds=int(cache_seconds_s or 300),
-                        proxy_mode=existing['proxy_mode'] if 'proxy_mode' in existing else 0)
+                        proxy_mode=existing['proxy_mode'] if 'proxy_mode' in existing else 0,
+                        domain_prefix=existing.get('domain_prefix', '') or '')
                     log('INFO', 'webhook', f'same-user updated rule {existing["id"]} on port {listen_port} -> {ip}:{port}',
                         client=client, fuwuqiportxuhao=fuwuqiportxuhao, listen_port=listen_port, rule_id=existing['id'])
                     conn.close()
@@ -1055,7 +1098,8 @@ class MainHandler(BaseHTTPRequestHandler):
                     scheme=redirect_scheme or 'http',
                     method=redirect_method or '308',
                     cache_seconds=int(cache_seconds_s or 300),
-                    proxy_mode=0)
+                    proxy_mode=0,
+                    domain_prefix='')
                 log('INFO', 'webhook', f'auto-created rule {fuwuqiportxuhao} on :{listen_port} -> {ip}:{port}',
                     client=client, fuwuqiportxuhao=fuwuqiportxuhao, listen_port=listen_port, rule_id=rule_id, target_ip=ip, target_port=port)
                 conn.close()
@@ -1586,7 +1630,29 @@ var owner=(item.created_by||'')!==''?item.created_by:'-'
 var ownRule=!isAdmin||item.created_by===uname
 var scheme=item.redirect_scheme||'http';var method=item.redirect_method||'307';var cacheInfo=method==='308'&&item.cache_seconds?item.cache_seconds+'s':''
 var target=item.target_ip?`${item.target_ip}:${item.target_port}`:'-'
-var domainHtml=accessDomain?`<code style="background:#0f1117;padding:3px 8px;border-radius:4px;font-size:12px;color:#22c55e;word-break:break-all" title="${accessDomain}">${accessDomain}</code>`:'<span style="color:#6b7280;font-size:11px">-</span>'
+var links=''
+function addLink(u,l,c){
+  links+='<a href="'+u+'" target="_blank" style="color:'+(c||'#22c55e')+';text-decoration:none;display:block;font-size:13px;line-height:1.6">'+l+'</a>'
+}
+if(item.domain_prefix){
+  addLink('http://'+item.domain_prefix+'.'+item.listen_port+'.'+rootDomain+'/',item.domain_prefix+'.'+item.listen_port+'.'+rootDomain)
+  addLink('http://'+rootDomain+':'+item.listen_port+'/',rootDomain+':'+item.listen_port,'#6b7280')
+}
+if(item.target_ip&&item.target_port&&!item.domain_prefix){
+  var s=item.redirect_scheme||'http'
+  addLink(s+'://'+item.target_ip+':'+item.target_port+'/',item.target_ip+':'+item.target_port,'#6b7280')
+}
+if(item.domain_mappings){
+  var lines=item.domain_mappings.split('\n')
+  for(var i=0;i<lines.length;i++){
+    var dm=lines[i].trim()
+    if(!dm)continue
+    var parts=dm.split(/\s+/)
+    var prefix=parts.length>=2?parts[0]:parts[0].split('.')[0]
+    addLink('http://'+prefix+'.'+item.listen_port+'.'+rootDomain+'/',prefix+'.'+item.listen_port+'.'+rootDomain,'#3b82f6')
+  }
+}
+var domainHtml=links?'<div style="line-height:1.5">'+links+'</div>':'<span style="color:#6b7280;font-size:11px">-</span>'
 tr.innerHTML=`<td>${item.id}</td><td><code style="color:#3b82f6;font-size:13px">${item.fuwuqiportxuhao}</code></td><td><strong style="font-size:15px">${item.listen_port}</strong></td><td>${domainHtml}</td><td style="max-width:500px"><div style="display:flex;align-items:flex-start;gap:6px"><code style="background:#0f1117;padding:6px 10px;border-radius:4px;font-size:13px;color:#3b82f6;word-break:break-all;display:block;line-height:1.6;flex:1">${webhook.replace(/&/g,'&amp;')}</code><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:12px;flex-shrink:0;margin-top:4px" onclick="copyText('${webhook.replace(/'/g,"\\'")}')">复制</button></div></td><td style="font-size:13px">${target}${tipHtml}</td><td style="font-size:13px;color:#9ca3af" class="${isAdmin?'':'hidden-owner'}">${owner}</td><td><span class="badge ${scheme==='https'?'badge-on':'badge-off'}" style="font-size:11px">${scheme}</span></td><td><span class="badge ${method==='308'?"badge-on":"badge-off"}" style="font-size:11px">${method}${cacheInfo?' '+cacheInfo:''}</span></td>${isAdmin?`<td><span class="badge ${item.proxy_mode?'badge-info':'badge-secondary'}" style="font-size:11px">${item.proxy_mode?'代理':'重定向'}</span></td>`:''}<td><span class="badge ${badgeCls}">${status}</span></td><td class="actions">${ownRule?`<button class="btn btn-sm ${en?'btn-outline':'btn-success'}" onclick="toggleRule(${item.id})">${en?'关':'开'}</button><button class="btn btn-sm btn-outline" onclick="editRule(${item.id})">编辑</button><button class="btn btn-sm btn-danger" onclick="deleteRule(${item.id})">删</button>`:'<span style="color:#6b7280;font-size:11px">只读</span>'}</td>`
 tbody.appendChild(tr)
 })
