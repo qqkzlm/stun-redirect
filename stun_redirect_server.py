@@ -280,6 +280,37 @@ def _normalize_domain(entry):
         entry = entry[:-1]
     return entry
 
+def _parse_domain_mapping(line):
+    """解析域名映射行，返回 (prefix, target_host)
+    支持格式:
+      "prefix domain"         → (prefix, domain)
+      "http://domain:port/"   → (first_subdomain, domain)  # 端口忽略，用规则的target_port
+      "domain"                → (first_subdomain, domain)
+      "prefix http://domain:port/" → (prefix, domain)
+    """
+    line = line.strip()
+    if not line:
+        return None
+    for p in ('https://', 'http://'):
+        if line.startswith(p):
+            line = line[len(p):]
+            break
+    if line.endswith('/'):
+        line = line[:-1]
+    ci = line.find(':')
+    if ci > 0:
+        line = line[:ci]
+    parts = line.split(None, 1)
+    if len(parts) == 2:
+        return (parts[0], parts[1])
+    elif len(parts) == 1:
+        domain = parts[0]
+        dot = domain.find('.')
+        if dot > 0:
+            return (domain[:dot], domain)
+        return (domain, None)
+    return None
+
 _redirect_servers = {}
 
 class RedirectHandler(BaseHTTPRequestHandler):
@@ -305,8 +336,8 @@ class RedirectHandler(BaseHTTPRequestHandler):
             code = 308 if t.method == '308' else 307
             self.send_response(code)
             self.send_header('Location', dest)
-            if code == 308 and t.cache_seconds > 0:
-                self.send_header('Cache-Control', f'max-age={t.cache_seconds}')
+            if code == 308:
+                self.send_header('Cache-Control', 'no-store, max-age=0')
             self.send_header('Content-Length', '0')
             self.send_header('Connection', 'close')
             self.end_headers()
@@ -405,19 +436,13 @@ def sync_nginx_routes():
             mappings = (r['domain_mappings'] or '').strip()
             if mappings:
                 for line in mappings.split('\n'):
-                    line = line.strip()
-                    if not line: continue
-                    line = _normalize_domain(line)
-                    parts = line.split(None, 1)
-                    if len(parts) == 2 and parts[0] == prefix:
-                        backend = f'{scheme}://{parts[1]}:{target_port}'
+                    parsed = _parse_domain_mapping(line)
+                    if not parsed:
+                        continue
+                    mp, mh = parsed
+                    if mp == prefix and mh:
+                        backend = f'{scheme}://{mh}:{target_port}'
                         break
-                    if len(parts) == 1:
-                        domain = parts[0]
-                        dot = domain.find('.')
-                        if dot > 0 and domain[:dot] == prefix:
-                            backend = f'{scheme}://{domain}:{target_port}'
-                            break
             if not backend and r['host']:
                 backend = f'{scheme}://{r["host"].replace("*", prefix)}:{target_port}'
         if not backend:
@@ -557,11 +582,12 @@ class MainHandler(BaseHTTPRequestHandler):
 
     def _domain_redirect(self):
         root_domain = get_setting('root_domain', '')
-        if not root_domain:
-            return False
         host_raw = self.headers.get('Host', '')
         hostname = host_raw.split(':')[0].lower() if ':' in host_raw else host_raw.lower()
         prefix, port = parse_domain(hostname, root_domain)
+        log('DEBUG', 'domain_redirect', 'check', root_domain=root_domain, host_raw=host_raw, hostname=hostname, prefix=prefix, port=port)
+        if not root_domain:
+            return False
         if prefix is None or port is None:
             return False
         rules = get_rules_cache()
@@ -580,21 +606,14 @@ class MainHandler(BaseHTTPRequestHandler):
         mappings = row['domain_mappings'] or ''
         if mappings:
             for line in mappings.split('\n'):
-                line = line.strip()
-                if not line: continue
-                line = _normalize_domain(line)
-                parts = line.split(None, 1)
-                if len(parts) == 2 and parts[0] == prefix:
-                    dest_host = parts[1]
+                parsed = _parse_domain_mapping(line)
+                if not parsed:
+                    continue
+                mp, mh = parsed
+                if mp == prefix and mh:
+                    dest_host = mh
                     mapping_matched = True
                     break
-                if len(parts) == 1:
-                    domain = parts[0]
-                    dot = domain.find('.')
-                    if dot > 0 and domain[:dot] == prefix:
-                        dest_host = domain
-                        mapping_matched = True
-                        break
         if not dest_host and host_tpl:
             dest_host = host_tpl.replace('*', prefix)
         if dest_host:
@@ -611,8 +630,8 @@ class MainHandler(BaseHTTPRequestHandler):
         code = 308 if method == '308' else 307
         self.send_response(code)
         self.send_header('Location', dest)
-        if code == 308 and cache_seconds > 0:
-            self.send_header('Cache-Control', f'max-age={cache_seconds}')
+        if code == 308:
+            self.send_header('Cache-Control', 'no-store, max-age=0')
         self.send_header('Content-Length', '0')
         self.end_headers()
         return True
@@ -1647,6 +1666,10 @@ if(item.domain_mappings){
   for(var i=0;i<lines.length;i++){
     var dm=lines[i].trim()
     if(!dm)continue
+    for(var p of['https://','http://'])if(dm.startsWith(p))dm=dm.slice(p.length)
+    if(dm.endsWith('/'))dm=dm.slice(0,-1)
+    var ci=dm.indexOf(':')
+    if(ci>0)dm=dm.slice(0,ci)
     var parts=dm.split(/\s+/)
     var prefix=parts.length>=2?parts[0]:parts[0].split('.')[0]
     addLink('http://'+prefix+'.'+item.listen_port+'.'+rootDomain+'/',prefix+'.'+item.listen_port+'.'+rootDomain,'#3b82f6')
