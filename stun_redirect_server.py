@@ -55,23 +55,60 @@ def log_cleanup_loop():
         cleanup_logs()
 
 # ─── Database ──────────────────────────────────────────────────────────────
+import threading
+
+_rules_cache = {}
+_rules_cache_time = 0
+_RULES_CACHE_DURATION = 3
+
+def _cache_get(key, duration=1):
+    t, v = _rules_cache.get(key, (0, None))
+    if time.monotonic() - t < duration:
+        return v
+    return None
+
+def _cache_set(key, value):
+    _rules_cache[key] = (time.monotonic(), value)
+
+def cache_invalidate():
+    _rules_cache.clear()
+
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
+    conn.execute("PRAGMA busy_timeout=5000")
     return conn
 
 def get_setting(key, default=''):
+    cached = _cache_get(f'set_{key}')
+    if cached is not None:
+        return cached
     conn = get_db()
     row = conn.execute("SELECT value FROM settings WHERE key=?", (key,)).fetchone()
+    val = row['value'] if row else default
     conn.close()
-    return row['value'] if row else default
+    _cache_set(f'set_{key}', val)
+    return val
 
 def set_setting(key, value):
     conn = get_db()
     conn.execute("INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)", (key, value))
     conn.commit()
     conn.close()
+    cache_invalidate()
+
+def get_rules_cache():
+    cached = _cache_get('rules', _RULES_CACHE_DURATION)
+    if cached is not None:
+        return cached
+    conn = get_db()
+    rows = conn.execute("SELECT * FROM redirect_rules WHERE enabled=1").fetchall()
+    rules = [dict(r) for r in rows]
+    _cache_set('rules', rules)
+    conn.close()
+    return rules
 
 def init_db():
     conn = get_db()
@@ -319,6 +356,7 @@ def load_all_rules():
     sync_nginx_routes()
 
 def sync_nginx_routes():
+    cache_invalidate()
     conn = get_db()
     rows = conn.execute("SELECT * FROM redirect_rules WHERE enabled=1 AND proxy_mode=1").fetchall()
     conn.close()
@@ -493,9 +531,12 @@ class MainHandler(BaseHTTPRequestHandler):
         prefix, port = parse_domain(hostname, root_domain)
         if prefix is None or port is None:
             return False
-        conn = get_db()
-        row = conn.execute("SELECT * FROM redirect_rules WHERE listen_port=? AND enabled=1", (port,)).fetchone()
-        conn.close()
+        rules = get_rules_cache()
+        row = None
+        for r in rules:
+            if r['listen_port'] == port:
+                row = r
+                break
         if not row:
             return False
         host_tpl = row['host'] or ''
