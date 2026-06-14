@@ -1,0 +1,4 @@
+{"time": "2026-06-14 10:08:22", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:08:24", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:08:24", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:08:25", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}

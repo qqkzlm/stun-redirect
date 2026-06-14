@@ -1,0 +1,6 @@
+{"time": "2026-06-14 09:34:35", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:34:35", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:34:37", "level": "INFO", "module": "server", "msg": "started on port 8818", "port": 8818}
+{"time": "2026-06-14 09:34:38", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:34:39", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:34:39", "level": "INFO", "module": "webhook", "msg": "auto-created rule test1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}

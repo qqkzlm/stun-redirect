@@ -1,0 +1,355 @@
+{"time": "2026-06-14 08:15:26", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 08:15:26", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 08:15:28", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 08:15:30", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 08:15:31", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 08:15:31", "level": "INFO", "module": "api", "msg": "create_rule by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/rules", "action": "create_rule", "user": "admin", "rule_id": 1, "fuwuqiportxuhao": "t1", "listen_port": 50001}
+{"time": "2026-06-14 08:15:31", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 08:15:31", "level": "INFO", "module": "redirect_mgr", "msg": "updated :50001 target :0 -> 1.2.3.4:56789", "listen_port": 50001, "old_target": ":0", "new_target": "1.2.3.4:56789"}
+{"time": "2026-06-14 08:15:31", "level": "INFO", "module": "webhook", "msg": "updated rule t1 -> 1.2.3.4:56789", "client": "127.0.0.1", "fuwuqiportxuhao": "t1", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 56789, "user": "admin1"}
+{"time": "2026-06-14 08:15:31", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 1}
+{"time": "2026-06-14 08:16:52", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "192.168.68.89", "path": "/api/rules", "method": "GET"}
+{"time": "2026-06-14 08:16:54", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 08:16:54", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 1}
+{"time": "2026-06-14 08:18:30", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "171.11.213.244", "target_port": 11385}
+{"time": "2026-06-14 08:18:30", "level": "INFO", "module": "webhook", "msg": "auto-created rule ce on :50002 -> 171.11.213.244:11385", "client": "192.168.68.12", "fuwuqiportxuhao": "ce", "listen_port": 50002, "rule_id": 2, "target_ip": "171.11.213.244", "target_port": 11385}
+{"time": "2026-06-14 08:18:34", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:18:34", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:18:59", "level": "INFO", "module": "redirect", "msg": "307 GET / -> http://1.2.3.4:56789/", "client": "192.168.68.89", "method": "GET", "path": "/", "target_ip": "1.2.3.4", "target_port": 56789, "dest": "http://1.2.3.4:56789/", "status": 307}
+{"time": "2026-06-14 08:19:16", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:16", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:37", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:38", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:41", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:41", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:42", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:42", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:52", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:19:52", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:20:30", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:20:31", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:20:31", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:20:32", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:21:37", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:21:38", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:21:38", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:21:39", "level": "WARN", "module": "webhook", "msg": "auto-create failed: invalid fuwuqiport=", "client": "192.168.68.12", "fuwuqiportxuhao": "test1", "fuwuqiport": ""}
+{"time": "2026-06-14 08:21:59", "level": "WARN", "module": "webhook", "msg": "missing parameters", "client": "192.168.68.89", "ip": "", "port": "", "fuwuqiportxuhao": ""}
+{"time": "2026-06-14 08:22:10", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:22:10", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:22:30", "level": "INFO", "module": "redirect_mgr", "msg": "updated :50001 target 1.2.3.4:56789 -> 171.11.213.244:13155", "listen_port": 50001, "old_target": "1.2.3.4:56789", "new_target": "171.11.213.244:13155"}
+{"time": "2026-06-14 08:22:30", "level": "INFO", "module": "webhook", "msg": "updated rule t1 -> 171.11.213.244:13155", "client": "192.168.68.12", "fuwuqiportxuhao": "t1", "listen_port": 50001, "target_ip": "171.11.213.244", "target_port": 13155, "user": "admin1"}
+{"time": "2026-06-14 08:22:38", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:22:38", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 08:22:58", "level": "INFO", "module": "redirect", "msg": "307 GET / -> http://171.11.213.244:13155/", "client": "192.168.68.89", "method": "GET", "path": "/", "target_ip": "171.11.213.244", "target_port": 13155, "dest": "http://171.11.213.244:13155/", "status": 307}
+{"time": "2026-06-14 08:40:34", "level": "INFO", "module": "redirect", "msg": "307 GET / -> http://171.11.213.244:11385/", "client": "192.168.68.89", "method": "GET", "path": "/", "target_ip": "171.11.213.244", "target_port": 11385, "dest": "http://171.11.213.244:11385/", "status": 307}
+{"time": "2026-06-14 08:56:46", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "127.0.0.1", "path": "/api/rules", "method": "GET"}
+{"time": "2026-06-14 08:56:47", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 08:56:47", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 09:17:34", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:17:34", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:17:35", "level": "INFO", "module": "server", "msg": "admin server on port 8801", "port": 8801}
+{"time": "2026-06-14 09:17:37", "level": "INFO", "module": "server", "msg": "domain server on port 9999, root domain=stun.sd8.cc", "port": 9999, "root_domain": "stun.sd8.cc"}
+{"time": "2026-06-14 09:17:54", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:17:55", "level": "INFO", "module": "server", "msg": "admin server on port 8810", "port": 8810}
+{"time": "2026-06-14 09:17:57", "level": "INFO", "module": "server", "msg": "domain server on port 40001, root domain=stun.sd8.cc", "port": 40001, "root_domain": "stun.sd8.cc"}
+{"time": "2026-06-14 09:18:15", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:18:17", "level": "INFO", "module": "server", "msg": "admin server on port 8811", "port": 8811}
+{"time": "2026-06-14 09:18:34", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:18:36", "level": "INFO", "module": "server", "msg": "admin server on port 8812", "port": 8812}
+{"time": "2026-06-14 09:19:00", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:19:01", "level": "INFO", "module": "server", "msg": "admin server on port 8813", "port": 8813}
+{"time": "2026-06-14 09:19:03", "level": "INFO", "module": "server", "msg": "domain server on port 40003, root domain=stun.sd8.cc", "port": 40003, "root_domain": "stun.sd8.cc"}
+{"time": "2026-06-14 09:30:14", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:30:14", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:30:16", "level": "INFO", "module": "server", "msg": "started on port 8814", "port": 8814}
+{"time": "2026-06-14 09:33:21", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:33:21", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:33:23", "level": "INFO", "module": "server", "msg": "started on port 8815", "port": 8815}
+{"time": "2026-06-14 09:33:23", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:33:25", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:33:25", "level": "INFO", "module": "webhook", "msg": "auto-created rule test1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:33:25", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "127.0.0.1", "path": "/api/rules", "method": "GET"}
+{"time": "2026-06-14 09:33:37", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:33:37", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:33:39", "level": "INFO", "module": "server", "msg": "started on port 8816", "port": 8816}
+{"time": "2026-06-14 09:33:39", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:33:41", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:33:41", "level": "INFO", "module": "webhook", "msg": "auto-created rule test1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:34:07", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:34:07", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:34:09", "level": "INFO", "module": "server", "msg": "started on port 8817", "port": 8817}
+{"time": "2026-06-14 09:34:10", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:34:11", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:34:11", "level": "INFO", "module": "webhook", "msg": "auto-created rule test1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:34:35", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:34:35", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:34:37", "level": "INFO", "module": "server", "msg": "started on port 8818", "port": 8818}
+{"time": "2026-06-14 09:34:38", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:34:39", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:34:39", "level": "INFO", "module": "webhook", "msg": "auto-created rule test1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:34:56", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:34:56", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:34:58", "level": "INFO", "module": "server", "msg": "started on port 8819", "port": 8819}
+{"time": "2026-06-14 09:34:59", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:35:01", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:35:01", "level": "INFO", "module": "webhook", "msg": "auto-created rule test1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:35:02", "level": "INFO", "module": "redirect_mgr", "msg": "updated :50001 target 10.0.0.1:80 -> 10.0.0.2:8080", "listen_port": 50001, "old_target": "10.0.0.1:80", "new_target": "10.0.0.2:8080"}
+{"time": "2026-06-14 09:35:02", "level": "INFO", "module": "webhook", "msg": "updated rule test1 -> 10.0.0.2:8080", "client": "127.0.0.1", "fuwuqiportxuhao": "test1", "listen_port": 50001, "target_ip": "10.0.0.2", "target_port": 8080, "user": "admin1"}
+{"time": "2026-06-14 09:35:03", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "127.0.0.1", "path": "/api/rules", "method": "GET"}
+{"time": "2026-06-14 09:38:51", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:38:51", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:38:53", "level": "INFO", "module": "server", "msg": "started on port 8820", "port": 8820}
+{"time": "2026-06-14 09:38:54", "level": "INFO", "module": "webhook", "msg": "auto-registered user admin1", "client": "127.0.0.1", "user": "admin1"}
+{"time": "2026-06-14 09:38:56", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:38:56", "level": "INFO", "module": "webhook", "msg": "auto-created rule t1 on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "t1", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:38:57", "level": "INFO", "module": "webhook", "msg": "port 50001 taken, auto-assigned 40000", "client": "127.0.0.1", "requested": 50001, "assigned": 40000}
+{"time": "2026-06-14 09:38:58", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "10.0.0.2", "target_port": 90}
+{"time": "2026-06-14 09:38:58", "level": "INFO", "module": "webhook", "msg": "auto-created rule t2 on :40000 -> 10.0.0.2:90", "client": "127.0.0.1", "fuwuqiportxuhao": "t2", "listen_port": 40000, "rule_id": 2, "target_ip": "10.0.0.2", "target_port": 90}
+{"time": "2026-06-14 09:38:59", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "127.0.0.1", "path": "/api/rules", "method": "GET"}
+{"time": "2026-06-14 09:38:59", "level": "INFO", "module": "webhook", "msg": "port 50001 taken, auto-assigned 40001", "client": "127.0.0.1", "requested": 50001, "assigned": 40001}
+{"time": "2026-06-14 09:39:01", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40001", "listen_port": 40001, "target_ip": "10.0.0.3", "target_port": 100}
+{"time": "2026-06-14 09:39:01", "level": "INFO", "module": "webhook", "msg": "auto-created rule t3 on :40001 -> 10.0.0.3:100", "client": "127.0.0.1", "fuwuqiportxuhao": "t3", "listen_port": 40001, "rule_id": 3, "target_ip": "10.0.0.3", "target_port": 100}
+{"time": "2026-06-14 09:43:06", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:43:06", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:43:08", "level": "INFO", "module": "server", "msg": "started on port 8821", "port": 8821}
+{"time": "2026-06-14 09:43:09", "level": "INFO", "module": "webhook", "msg": "auto-registered user user1", "client": "127.0.0.1", "user": "user1"}
+{"time": "2026-06-14 09:43:11", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:43:11", "level": "INFO", "module": "webhook", "msg": "auto-created rule u1a on :50001 -> 10.0.0.1:80", "client": "127.0.0.1", "fuwuqiportxuhao": "u1a", "listen_port": 50001, "rule_id": 1, "target_ip": "10.0.0.1", "target_port": 80}
+{"time": "2026-06-14 09:43:12", "level": "INFO", "module": "webhook", "msg": "same user port conflict, updating existing rule 1", "client": "127.0.0.1", "user": "user1", "port": 50001, "existing_rule": 1}
+{"time": "2026-06-14 09:43:12", "level": "INFO", "module": "webhook", "msg": "same-user updated rule 1 on port 50001 -> 10.0.0.2:90", "client": "127.0.0.1", "fuwuqiportxuhao": "u1b", "listen_port": 50001, "rule_id": 1}
+{"time": "2026-06-14 09:43:13", "level": "INFO", "module": "webhook", "msg": "auto-registered user user2", "client": "127.0.0.1", "user": "user2"}
+{"time": "2026-06-14 09:43:13", "level": "INFO", "module": "webhook", "msg": "port 50001 taken by different user, auto-assigned 40000", "client": "127.0.0.1", "requested": 50001, "assigned": 40000}
+{"time": "2026-06-14 09:43:14", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "10.0.0.3", "target_port": 100}
+{"time": "2026-06-14 09:43:14", "level": "INFO", "module": "webhook", "msg": "auto-created rule u2a on :40000 -> 10.0.0.3:100", "client": "127.0.0.1", "fuwuqiportxuhao": "u2a", "listen_port": 40000, "rule_id": 2, "target_ip": "10.0.0.3", "target_port": 100}
+{"time": "2026-06-14 09:43:16", "level": "INFO", "module": "webhook", "msg": "port 50001 taken by different user, auto-assigned 40001", "client": "127.0.0.1", "requested": 50001, "assigned": 40001}
+{"time": "2026-06-14 09:43:17", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40001", "listen_port": 40001, "target_ip": "10.0.0.4", "target_port": 110}
+{"time": "2026-06-14 09:43:17", "level": "INFO", "module": "webhook", "msg": "auto-created rule u2b on :40001 -> 10.0.0.4:110", "client": "127.0.0.1", "fuwuqiportxuhao": "u2b", "listen_port": 40001, "rule_id": 3, "target_ip": "10.0.0.4", "target_port": 110}
+{"time": "2026-06-14 09:43:18", "level": "WARN", "module": "webhook", "msg": "auth failed", "client": "127.0.0.1", "user": "user1"}
+{"time": "2026-06-14 09:43:19", "level": "INFO", "module": "redirect_mgr", "msg": "updated :50001 target 10.0.0.1:80 -> 10.0.0.6:130", "listen_port": 50001, "old_target": "10.0.0.1:80", "new_target": "10.0.0.6:130"}
+{"time": "2026-06-14 09:43:19", "level": "INFO", "module": "webhook", "msg": "updated rule u1a -> 10.0.0.6:130", "client": "127.0.0.1", "fuwuqiportxuhao": "u1a", "listen_port": 50001, "target_ip": "10.0.0.6", "target_port": 130, "user": "user1"}
+{"time": "2026-06-14 09:45:43", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:45:43", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:45:44", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 09:45:54", "level": "WARN", "module": "api", "msg": "unauthorized access", "client": "192.168.68.89", "path": "/api/rules", "method": "GET"}
+{"time": "2026-06-14 09:45:59", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:46:00", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 09:46:28", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:46:30", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 09:47:46", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 09:47:46", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 09:47:57", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 09:47:57", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 09:59:56", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 09:59:56", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 09:59:57", "level": "INFO", "module": "server", "msg": "started on port 8822", "port": 8822}
+{"time": "2026-06-14 10:00:14", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 10:00:14", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:00:15", "level": "INFO", "module": "server", "msg": "started on port 8823", "port": 8823}
+{"time": "2026-06-14 10:00:33", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:00:33", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:00:33", "level": "INFO", "module": "webhook", "msg": "auto-registered user user1", "client": "127.0.0.1", "user": "user1"}
+{"time": "2026-06-14 10:00:35", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:00:35", "level": "INFO", "module": "webhook", "msg": "auto-created rule p1 on :50001 -> 1.2.3.4:80", "client": "127.0.0.1", "fuwuqiportxuhao": "p1", "listen_port": 50001, "rule_id": 1, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:00:35", "level": "INFO", "module": "webhook", "msg": "auto-registered user user2", "client": "127.0.0.1", "user": "user2"}
+{"time": "2026-06-14 10:00:35", "level": "INFO", "module": "webhook", "msg": "port 50001 taken by different user, auto-assigned 40000", "client": "127.0.0.1", "requested": 50001, "assigned": 40000}
+{"time": "2026-06-14 10:00:36", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:00:36", "level": "INFO", "module": "webhook", "msg": "auto-created rule p2 on :40000 -> 5.6.7.8:90", "client": "127.0.0.1", "fuwuqiportxuhao": "p2", "listen_port": 40000, "rule_id": 2, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:00:36", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:00:36", "level": "INFO", "module": "api", "msg": "login by user1", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "user1"}
+{"time": "2026-06-14 10:00:36", "level": "INFO", "module": "api", "msg": "list_rules by user1", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "user1", "count": 1}
+{"time": "2026-06-14 10:01:37", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 10:01:37", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:01:39", "level": "INFO", "module": "server", "msg": "started on port 8824", "port": 8824}
+{"time": "2026-06-14 10:01:49", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:01:49", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:01:49", "level": "INFO", "module": "webhook", "msg": "auto-registered user user1", "client": "127.0.0.1", "user": "user1"}
+{"time": "2026-06-14 10:01:50", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:01:50", "level": "INFO", "module": "webhook", "msg": "auto-created rule p1 on :50001 -> 1.2.3.4:80", "client": "127.0.0.1", "fuwuqiportxuhao": "p1", "listen_port": 50001, "rule_id": 1, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:01:50", "level": "INFO", "module": "webhook", "msg": "auto-registered user user2", "client": "127.0.0.1", "user": "user2"}
+{"time": "2026-06-14 10:01:50", "level": "INFO", "module": "webhook", "msg": "port 50001 taken by different user, auto-assigned 40000", "client": "127.0.0.1", "requested": 50001, "assigned": 40000}
+{"time": "2026-06-14 10:01:52", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:01:52", "level": "INFO", "module": "webhook", "msg": "auto-created rule p2 on :40000 -> 5.6.7.8:90", "client": "127.0.0.1", "fuwuqiportxuhao": "p2", "listen_port": 40000, "rule_id": 2, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:01:52", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 10:01:52", "level": "INFO", "module": "api", "msg": "login by user1", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "user1"}
+{"time": "2026-06-14 10:01:52", "level": "INFO", "module": "api", "msg": "list_rules by user1", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "user1", "count": 1}
+{"time": "2026-06-14 10:05:06", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:05:07", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:05:07", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:05:08", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:07:54", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:07:55", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:07:55", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:07:57", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:08:22", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:08:24", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:08:24", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:08:25", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:08:37", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "1.2.3.4", "target_port": 80}
+{"time": "2026-06-14 10:08:38", "level": "INFO", "module": "redirect_mgr", "msg": "started on :40000", "listen_port": 40000, "target_ip": "5.6.7.8", "target_port": 90}
+{"time": "2026-06-14 10:08:38", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:08:39", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:08:51", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 10:08:51", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:08:52", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:08:58", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:09:45", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:09:47", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:09:56", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:11:36", "level": "WARN", "module": "http", "msg": "404 not found", "client": "192.168.68.89", "path": "/favicon.ico"}
+{"time": "2026-06-14 10:14:49", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 10:14:49", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:14:50", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:15:01", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:15:10", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:15:12", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:15:15", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:15:41", "level": "INFO", "module": "db", "msg": "default admin user created"}
+{"time": "2026-06-14 10:15:41", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:15:42", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:15:45", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:18:06", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:18:08", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:18:11", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:18:33", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:18:33", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:21:47", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:21:48", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:21:51", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:22:44", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:22:45", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:22:48", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:33:30", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:33:30", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:36:34", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:36:36", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:36:38", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:38:07", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:38:07", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:39:56", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 0 redirect rules from db"}
+{"time": "2026-06-14 10:39:57", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:40:00", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:41:54", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:41:54", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 0}
+{"time": "2026-06-14 10:42:03", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 10:42:03", "level": "INFO", "module": "webhook", "msg": "auto-created rule ce on :50002 -> 192.168.31.1:6666", "client": "192.168.68.12", "fuwuqiportxuhao": "ce", "listen_port": 50002, "rule_id": 1, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 10:42:20", "level": "INFO", "module": "redirect_mgr", "msg": "updated :50002 target 192.168.31.1:6666 -> 192.168.31.1:6666", "listen_port": 50002, "old_target": "192.168.31.1:6666", "new_target": "192.168.31.1:6666"}
+{"time": "2026-06-14 10:42:20", "level": "INFO", "module": "webhook", "msg": "updated rule ce -> 192.168.31.1:6666", "client": "192.168.68.12", "fuwuqiportxuhao": "ce", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666, "user": "admin"}
+{"time": "2026-06-14 10:42:29", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 1}
+{"time": "2026-06-14 10:42:29", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 1}
+{"time": "2026-06-14 10:42:37", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 1}
+{"time": "2026-06-14 10:44:00", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:44:00", "level": "INFO", "module": "api", "msg": "create_rule by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/rules", "action": "create_rule", "user": "admin", "rule_id": 2, "fuwuqiportxuhao": "test1电风扇", "listen_port": 50003}
+{"time": "2026-06-14 10:44:00", "level": "INFO", "module": "api", "msg": "create_rule_same_user_update by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/rules", "action": "create_rule_same_user_update", "user": "admin", "rule_id": 2, "listen_port": 50003}
+{"time": "2026-06-14 10:44:00", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 10:44:00", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 10:44:24", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 10:44:26", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:44:26", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:44:27", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:44:28", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:44:55", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:44:55", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 10:44:57", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 10:47:38", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 10:47:39", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:47:39", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 2 redirect rules from db"}
+{"time": "2026-06-14 10:47:40", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:47:41", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:48:32", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:48:32", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 2}
+{"time": "2026-06-14 10:49:55", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:49:55", "level": "INFO", "module": "api", "msg": "create_rule by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/rules", "action": "create_rule", "user": "admin", "rule_id": 3, "fuwuqiportxuhao": "50001", "listen_port": 50001}
+{"time": "2026-06-14 10:49:55", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 3}
+{"time": "2026-06-14 10:50:10", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 3}
+{"time": "2026-06-14 10:50:13", "level": "INFO", "module": "api", "msg": "update_rule by admin", "client": "192.168.68.89", "method": "PUT", "path": "/api/rules/3", "action": "update_rule", "user": "admin", "rule_id": 3, "changes": {"fuwuqiportxuhao": "50001", "listen_port": 50001, "host": "", "redirect_scheme": "http", "redirect_method": "308", "cache_seconds": 300}}
+{"time": "2026-06-14 10:50:13", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 3}
+{"time": "2026-06-14 10:50:35", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50005", "listen_port": 50005, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:50:35", "level": "INFO", "module": "api", "msg": "create_rule by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/rules", "action": "create_rule", "user": "admin", "rule_id": 4, "fuwuqiportxuhao": "df", "listen_port": 50005}
+{"time": "2026-06-14 10:50:35", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:53:09", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 10:53:14", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:53:15", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:53:16", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50005", "listen_port": 50005, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:53:16", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 4 redirect rules from db"}
+{"time": "2026-06-14 10:53:18", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:53:24", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:55:28", "level": "WARN", "module": "http", "msg": "404 not found", "client": "192.168.68.89", "path": "/favicon.ico"}
+{"time": "2026-06-14 10:55:31", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:55:31", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:55:46", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:55:53", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:55:56", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:56:35", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:56:38", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:56:40", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:56:43", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:57:09", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:57:14", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:57:14", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:57:27", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 10:57:27", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "127.0.0.1", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 10:58:54", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 10:58:56", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:58:57", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:58:58", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50005", "listen_port": 50005, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 10:58:58", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 4 redirect rules from db"}
+{"time": "2026-06-14 10:59:00", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 10:59:13", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:00:45", "level": "WARN", "module": "http", "msg": "404 not found", "client": "192.168.68.89", "path": "/favicon.ico"}
+{"time": "2026-06-14 11:00:57", "level": "WARN", "module": "http", "msg": "404 not found", "client": "192.168.68.89", "path": "/favicon.ico"}
+{"time": "2026-06-14 11:00:58", "level": "WARN", "module": "http", "msg": "404 not found", "client": "192.168.68.89", "path": "/favicon.ico"}
+{"time": "2026-06-14 11:01:01", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:01:01", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:01:03", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:01:06", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:01:09", "level": "INFO", "module": "api", "msg": "update_rule by admin", "client": "192.168.68.89", "method": "PUT", "path": "/api/rules/3", "action": "update_rule", "user": "admin", "rule_id": 3, "changes": {"fuwuqiportxuhao": "50001", "listen_port": 50001, "host": "*.fn.sd8.cc", "redirect_scheme": "http", "redirect_method": "308", "cache_seconds": 300}}
+{"time": "2026-06-14 11:01:09", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:01:11", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:01:19", "level": "INFO", "module": "api", "msg": "update_rule by admin", "client": "192.168.68.89", "method": "PUT", "path": "/api/rules/3", "action": "update_rule", "user": "admin", "rule_id": 3, "changes": {"fuwuqiportxuhao": "50001", "listen_port": 50001, "host": "*.fn.sd8.cc", "redirect_scheme": "http", "redirect_method": "307", "cache_seconds": 300}}
+{"time": "2026-06-14 11:01:19", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:01:20", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:02:57", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 11:02:58", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:03:00", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:03:01", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50005", "listen_port": 50005, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:03:01", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 4 redirect rules from db"}
+{"time": "2026-06-14 11:03:02", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 11:03:11", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:04:33", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:04:33", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 4}
+{"time": "2026-06-14 11:05:13", "level": "INFO", "module": "redirect_mgr", "msg": "started on :44444", "listen_port": 44444, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:05:13", "level": "INFO", "module": "api", "msg": "create_rule by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/rules", "action": "create_rule", "user": "admin", "rule_id": 5, "fuwuqiportxuhao": "444", "listen_port": 44444}
+{"time": "2026-06-14 11:05:13", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:05:32", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 11:05:34", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:05:35", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:05:37", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50005", "listen_port": 50005, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:05:38", "level": "INFO", "module": "redirect_mgr", "msg": "started on :44444", "listen_port": 44444, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:05:38", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 5 redirect rules from db"}
+{"time": "2026-06-14 11:05:39", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 11:05:46", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:06:39", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:06:39", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:09:06", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50002", "listen_port": 50002, "target_ip": "192.168.31.1", "target_port": 6666}
+{"time": "2026-06-14 11:09:07", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50003", "listen_port": 50003, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:09:08", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50001", "listen_port": 50001, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:09:10", "level": "INFO", "module": "redirect_mgr", "msg": "started on :50005", "listen_port": 50005, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:09:11", "level": "INFO", "module": "redirect_mgr", "msg": "started on :44444", "listen_port": 44444, "target_ip": "-", "target_port": "-"}
+{"time": "2026-06-14 11:09:11", "level": "INFO", "module": "redirect_mgr", "msg": "loaded 5 redirect rules from db"}
+{"time": "2026-06-14 11:09:13", "level": "INFO", "module": "server", "msg": "started on port 8800", "port": 8800}
+{"time": "2026-06-14 11:09:20", "level": "INFO", "module": "api", "msg": "login by admin", "client": "127.0.0.1", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:09:48", "level": "INFO", "module": "api", "msg": "login by admin", "client": "192.168.68.89", "method": "POST", "path": "/api/login", "action": "login", "user": "admin"}
+{"time": "2026-06-14 11:09:48", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:09:51", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:09:51", "level": "WARN", "module": "http", "msg": "404 not found", "client": "192.168.68.89", "path": "/favicon.ico"}
+{"time": "2026-06-14 11:09:51", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:10:08", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:10:12", "level": "INFO", "module": "api", "msg": "update_rule by admin", "client": "192.168.68.89", "method": "PUT", "path": "/api/rules/3", "action": "update_rule", "user": "admin", "rule_id": 3, "changes": {"fuwuqiportxuhao": "50001", "listen_port": 50001, "host": "*.fn.sd8.cc", "redirect_scheme": "http", "redirect_method": "308", "cache_seconds": 300}}
+{"time": "2026-06-14 11:10:12", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:10:14", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:10:48", "level": "INFO", "module": "redirect_mgr", "msg": "updated :50001 target :0 -> 171.11.213.244:13155", "listen_port": 50001, "old_target": ":0", "new_target": "171.11.213.244:13155"}
+{"time": "2026-06-14 11:10:48", "level": "INFO", "module": "webhook", "msg": "updated rule 50001 -> 171.11.213.244:13155", "client": "192.168.68.12", "fuwuqiportxuhao": "50001", "listen_port": 50001, "target_ip": "171.11.213.244", "target_port": 13155, "user": "admin"}
+{"time": "2026-06-14 11:10:55", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:10:55", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
+{"time": "2026-06-14 11:11:07", "level": "INFO", "module": "api", "msg": "list_rules by admin", "client": "192.168.68.89", "method": "GET", "path": "/api/rules", "action": "list_rules", "user": "admin", "count": 5}
