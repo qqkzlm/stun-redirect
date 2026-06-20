@@ -1288,14 +1288,15 @@ ADMIN_HTML = r'''<!DOCTYPE html>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,'Microsoft YaHei',sans-serif;background:#0f1117;color:#e1e4e8;min-height:100vh;line-height:1.5}
-.container{max-width:1200px;margin:0 auto;padding:24px}
-.card{background:#1c1f2b;border-radius:10px;border:1px solid #2d3041;padding:20px;margin-bottom:16px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s ease}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.card{background:#1c1f2b;border-radius:10px;border:1px solid #2d3041;padding:16px;margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-weight:500;transition:all .15s ease;white-space:nowrap}
 .btn-primary{background:#3b82f6;color:#fff}.btn-primary:hover{background:#2563eb}
 .btn-danger{background:#ef4444;color:#fff}.btn-danger:hover{background:#dc2626}
 .btn-success{background:#22c55e;color:#fff}.btn-success:hover{background:#16a34a}
-.btn-sm{padding:5px 12px;font-size:12px}
+.btn-sm{padding:4px 10px;font-size:11px}
 .btn-outline{background:0 0;border:1px solid #3b82f6;color:#3b82f6}.btn-outline:hover{background:#3b82f6;color:#fff}
+.btn-ghost{background:0 0;border:none;color:#6b7280;cursor:pointer;padding:4px 6px;border-radius:4px;font-size:12px;transition:all .15s}.btn-ghost:hover{color:#e1e4e8;background:#2d3041}
 input,select,textarea{width:100%;padding:9px 12px;border:1px solid #2d3041;border-radius:6px;background:#0f1117;color:#e1e4e8;font-size:13px;outline:0;transition:border-color .15s}
 textarea{resize:vertical;font-family:inherit;line-height:1.5}
 input:focus,select:focus{border-color:#3b82f6}
@@ -1304,25 +1305,25 @@ label{display:block;margin-bottom:5px;font-size:12px;color:#9ca3af;font-weight:5
 .form-group{margin-bottom:14px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 h1{font-size:20px;font-weight:600;letter-spacing:-0.01em}
-h2{font-size:15px;font-weight:600;margin-bottom:14px;color:#e1e4e8}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+h2{font-size:14px;font-weight:600;margin-bottom:12px;color:#e1e4e8}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .header h1{color:#fff}
-.user-info{font-size:13px;color:#9ca3af;display:flex;align-items:center;gap:14px}
+.user-info{font-size:12px;color:#9ca3af;display:flex;align-items:center;gap:12px}
 .user-info a{color:#3b82f6;cursor:pointer;text-decoration:none}.user-info a:hover{color:#60a5fa}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #2d3041}
-th{color:#6b7280;font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:0.03em}
-td{color:#e1e4e8}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;border:1px solid #2d3041}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:900px}
+th{position:sticky;top:0;z-index:1;background:#1c1f2b;padding:10px 10px;text-align:left;border-bottom:2px solid #2d3041;color:#6b7280;font-weight:600;font-size:11px;white-space:nowrap}
+td{padding:9px 10px;text-align:left;border-bottom:1px solid #2d3041;color:#e1e4e8;vertical-align:middle}
+tr:last-child td{border-bottom:0}
 tr:hover td{background:#252836}
-.table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
 .badge-on{background:#22c55e18;color:#22c55e;border:1px solid #22c55e30}
 .badge-off{background:#ef444418;color:#ef4444;border:1px solid #ef444430}
 .badge-info{background:#3b82f618;color:#3b82f6;border:1px solid #3b82f630}
 .badge-secondary{background:#6b728018;color:#9ca3af;border:1px solid #6b728030}
 .badge-pending{background:#f59e0b18;color:#f59e0b;border:1px solid #f59e0b30}
-.actions{display:flex;gap:4px}
+.actions{display:flex;gap:4px;flex-wrap:nowrap}
 .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.65);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
 .modal-overlay.active{display:flex}
 .modal{background:#1c1f2b;border-radius:12px;border:1px solid #2d3041;padding:24px;width:480px;max-width:90vw;max-height:85vh;overflow-y:auto}
@@ -1332,32 +1333,31 @@ tr:hover td{background:#252836}
 #loginPage h1,#registerPage h1{text-align:center;margin-bottom:24px;font-size:22px}
 #loginPage .card,#registerPage .card{padding:28px}
 .tab-link{color:#3b82f6;cursor:pointer;text-align:center;display:block;margin-top:12px;font-size:13px}.tab-link:hover{color:#60a5fa}
-.toast{position:fixed;top:20px;right:20px;padding:14px 20px;border-radius:10px;color:#fff;font-size:14px;z-index:2000;opacity:0;transform:translateY(-16px);transition:.25s ease;max-width:95vw;word-break:break-all;line-height:1.8;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.toast{position:fixed;top:20px;right:20px;padding:14px 20px;border-radius:10px;color:#fff;font-size:14px;z-index:2000;opacity:0;transform:translateY(-16px);transition:.25s ease;max-width:95vw;word-break:break-all;line-height:1.6;box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .toast.show{opacity:1;transform:translateY(0)}
-.toast-success{background:#22c55e}.toast-error{background:#ef4444}
 .toast-success{background:#22c55e}.toast-error{background:#ef4444}
 .empty-state{text-align:center;padding:36px 0;color:#6b7280;font-size:13px}.empty-state p{margin-bottom:10px}
 
-.stat-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.stat-item{background:#1c1f2b;border:1px solid #2d3041;border-radius:8px;padding:6px 14px;font-size:12px;display:flex;align-items:center;gap:6px}
-.stat-label{color:#6b7280}.stat-value{font-weight:600}.stat-warn{color:#f59e0b}
+.stat-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.stat-item{background:#1c1f2b;border:1px solid #2d3041;border-radius:8px;padding:5px 12px;font-size:11px;display:flex;align-items:center;gap:5px}
+.stat-label{color:#6b7280}.stat-value{font-weight:600;color:#e1e4e8}.stat-warn{color:#f59e0b}
 
-.tab-nav{display:flex;gap:0;margin-bottom:14px;background:#1c1f2b;border:1px solid #2d3041;border-radius:8px;padding:3px;width:fit-content}
-.tab-btn{padding:6px 16px;border-radius:6px;border:none;background:0 0;color:#6b7280;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.tab-nav{display:flex;gap:0;margin-bottom:12px;background:#1c1f2b;border:1px solid #2d3041;border-radius:8px;padding:3px;width:fit-content}
+.tab-btn{padding:5px 14px;border-radius:6px;border:none;background:0 0;color:#6b7280;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
 .tab-btn.active{background:#3b82f6;color:#fff}
 .tab-btn:hover:not(.active){color:#e1e4e8}
 .hidden-owner{display:none}
 
 .doc-toggle{background:#1c1f2b;border:1px solid #2d3041;border-radius:10px;margin-bottom:16px;overflow:hidden}
-.doc-toggle-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;font-size:13px;color:#9ca3af;font-weight:500;transition:background .15s}
+.doc-toggle-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;cursor:pointer;font-size:12px;color:#9ca3af;font-weight:500;transition:background .15s}
 .doc-toggle-header:hover{background:#252836}
 .doc-toggle-icon{font-size:10px;transition:transform .2s}
 .doc-toggle.open .doc-toggle-icon{transform:rotate(180deg)}
-.doc-toggle-body{display:none;padding:0 16px 14px;font-size:12px;color:#9ca3af;line-height:1.7}
+.doc-toggle-body{display:none;padding:0 14px 12px;font-size:12px;color:#9ca3af;line-height:1.7}
 .doc-toggle.open .doc-toggle-body{display:block}
-.doc-section{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #2d3041}
+.doc-section{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #2d3041}
 .doc-section:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-.doc-title{font-weight:600;color:#e1e4e8;margin-bottom:6px;font-size:12px}
+.doc-title{font-weight:600;color:#e1e4e8;margin-bottom:5px;font-size:12px}
 .doc-row{display:flex;gap:8px;margin-bottom:3px;flex-wrap:wrap}
 .doc-label{color:#6b7280;min-width:70px;flex-shrink:0}
 .doc-method-get{color:#3b82f6;font-weight:600}
@@ -1371,7 +1371,14 @@ code{background:#0f1117;padding:2px 6px;border-radius:3px;font-size:11px;color:#
 .doc-conflict{margin-top:8px;padding:8px 12px;background:#f59e0b10;border:1px solid #f59e0b30;border-radius:6px;color:#f59e0b;font-size:11px}
 .doc-tip{margin-top:8px;color:#6b7280;font-size:11px}
 
-@media(max-width:768px){.form-row{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start;gap:8px}.table-header{flex-direction:column;align-items:flex-start;gap:8px}}
+.domain-links{display:flex;flex-wrap:wrap;gap:2px 6px;align-items:center}
+.domain-links a{color:#22c55e;text-decoration:none;font-size:12px;white-space:nowrap}
+.domain-links a:hover{text-decoration:underline}
+.domain-links .sep{color:#2d3041;font-size:10px}
+.domain-links .gray{color:#6b7280}
+.domain-links .blue{color:#3b82f6}
+
+@media(max-width:768px){.form-row{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start;gap:8px}.table-header{flex-direction:column;align-items:flex-start;gap:8px}.container{padding:12px}.card{padding:12px}}
 @media(max-width:640px){.doc-row{flex-direction:column;gap:2px}.doc-label{min-width:0}}
 </style>
 </head>
@@ -1498,7 +1505,7 @@ document.head.appendChild(ss)
 </div>
 <div class="table-wrap">
 <table>
-<thead><tr><th>ID</th><th>序号</th><th>监听端口</th><th>访问域名</th><th>Webhook 地址</th><th>目标</th><th id="thOwner">用户</th><th>协议</th><th>方式</th><th id="thMode">模式</th><th>状态</th><th>操作</th></tr></thead>
+<thead><tr><th>ID</th><th>序号</th><th>端口</th><th>访问域名</th><th>Webhook</th><th>目标</th><th id="thOwner">用户</th><th>配置</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead>
 <tbody id="rulesBody"></tbody>
 </table>
 </div>
@@ -1619,7 +1626,6 @@ document.getElementById('userDisplay').textContent=uname+(isAdmin?' (管理员)'
 document.getElementById('adminNav').style.display=isAdmin?'block':'none'
 document.getElementById('thOwner').style.display=isAdmin?'':'none'
 document.getElementById('modeGroup').style.display=isAdmin?'':'none'
-document.getElementById('thMode').style.display=isAdmin?'':'none'
 if(isAdmin){
 document.getElementById('ruleLimitText').textContent='∞ (管理员无限制)'
 document.getElementById('ruleLimitText').style.color='#3b82f6'
@@ -1642,24 +1648,20 @@ const status=en?'开启':'关闭'
 const badgeCls=en?'badge-on':'badge-off'
 const hasTarget=item.target_ip&&item.target_port
 const tipHtml=hasTarget?'':` <span class="badge badge-pending">等待</span>`
-var webhook=`${whBase}/stun?ip=#{ip}&port=#{port}&fuwuqiportxuhao=${item.fuwuqiportxuhao}&listen_port=${item.listen_port}&user=${item.created_by||'admin1'}`
-var accessDomain=item.domain_prefix?`${item.domain_prefix}.${item.listen_port}.${rootDomain}`:`*.${item.listen_port}.${rootDomain}`
+var whUrl=`${whBase}/stun?ip=#{ip}&port=#{port}&fuwuqiportxuhao=${item.fuwuqiportxuhao}&listen_port=${item.listen_port}&user=${item.created_by||'admin1'}`
 const tr=document.createElement('tr')
 var owner=(item.created_by||'')!==''?item.created_by:'-'
 var ownRule=!isAdmin||item.created_by===uname
 var scheme=item.redirect_scheme||'http';var method=item.redirect_method||'307';var cacheInfo=method==='308'&&item.cache_seconds?item.cache_seconds+'s':''
 var target=item.target_ip?`${item.target_ip}:${item.target_port}`:'-'
 var links=''
-function addLink(u,l,c){
-  links+='<a href="'+u+'" target="_blank" style="color:'+(c||'#22c55e')+';text-decoration:none;display:block;font-size:13px;line-height:1.6">'+l+'</a>'
-}
 if(item.domain_prefix){
-  addLink('http://'+item.domain_prefix+'.'+item.listen_port+'.'+rootDomain+'/',item.domain_prefix+'.'+item.listen_port+'.'+rootDomain)
-  addLink('http://'+rootDomain+':'+item.listen_port+'/',rootDomain+':'+item.listen_port,'#6b7280')
+  links+='<a href="http://'+item.domain_prefix+'.'+item.listen_port+'.'+rootDomain+'/" target="_blank">'+item.domain_prefix+'.'+item.listen_port+'.'+rootDomain+'</a><span class="sep">|</span><a href="http://'+rootDomain+':'+item.listen_port+'/" target="_blank" class="gray">'+rootDomain+':'+item.listen_port+'</a>'
 }
 if(item.target_ip&&item.target_port&&!item.domain_prefix){
   var s=item.redirect_scheme||'http'
-  addLink(s+'://'+item.target_ip+':'+item.target_port+'/',item.target_ip+':'+item.target_port,'#6b7280')
+  if(links)links+='<span class="sep">|</span>'
+  links+='<a href="'+s+'://'+item.target_ip+':'+item.target_port+'/" target="_blank" class="gray">'+item.target_ip+':'+item.target_port+'</a>'
 }
 if(item.domain_mappings){
   var lines=item.domain_mappings.split('\n')
@@ -1672,11 +1674,14 @@ if(item.domain_mappings){
     if(ci>0)dm=dm.slice(0,ci)
     var parts=dm.split(/\s+/)
     var prefix=parts.length>=2?parts[0]:parts[0].split('.')[0]
-    addLink('http://'+prefix+'.'+item.listen_port+'.'+rootDomain+'/',prefix+'.'+item.listen_port+'.'+rootDomain,'#3b82f6')
+    if(links)links+='<span class="sep">|</span>'
+    links+='<a href="http://'+prefix+'.'+item.listen_port+'.'+rootDomain+'/" target="_blank" class="blue">'+prefix+'.'+item.listen_port+'.'+rootDomain+'</a>'
   }
 }
-var domainHtml=links?'<div style="line-height:1.5">'+links+'</div>':'<span style="color:#6b7280;font-size:11px">-</span>'
-tr.innerHTML=`<td>${item.id}</td><td><code style="color:#3b82f6;font-size:13px">${item.fuwuqiportxuhao}</code></td><td><strong style="font-size:15px">${item.listen_port}</strong></td><td>${domainHtml}</td><td style="max-width:500px"><div style="display:flex;align-items:flex-start;gap:6px"><code style="background:#0f1117;padding:6px 10px;border-radius:4px;font-size:13px;color:#3b82f6;word-break:break-all;display:block;line-height:1.6;flex:1">${webhook.replace(/&/g,'&amp;')}</code><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:12px;flex-shrink:0;margin-top:4px" onclick="copyText('${webhook.replace(/'/g,"\\'")}')">复制</button></div></td><td style="font-size:13px">${target}${tipHtml}</td><td style="font-size:13px;color:#9ca3af" class="${isAdmin?'':'hidden-owner'}">${owner}</td><td><span class="badge ${scheme==='https'?'badge-on':'badge-off'}" style="font-size:11px">${scheme}</span></td><td><span class="badge ${method==='308'?"badge-on":"badge-off"}" style="font-size:11px">${method}${cacheInfo?' '+cacheInfo:''}</span></td>${isAdmin?`<td><span class="badge ${item.proxy_mode?'badge-info':'badge-secondary'}" style="font-size:11px">${item.proxy_mode?'代理':'重定向'}</span></td>`:''}<td><span class="badge ${badgeCls}">${status}</span></td><td class="actions">${ownRule?`<button class="btn btn-sm ${en?'btn-outline':'btn-success'}" onclick="toggleRule(${item.id})">${en?'关':'开'}</button><button class="btn btn-sm btn-outline" onclick="editRule(${item.id})">编辑</button><button class="btn btn-sm btn-danger" onclick="deleteRule(${item.id})">删</button>`:'<span style="color:#6b7280;font-size:11px">只读</span>'}</td>`
+var domainHtml=links?'<span class="domain-links">'+links+'</span>':'<span style="color:#6b7280;font-size:11px">-</span>'
+var updatedAt=item.updated_at?item.updated_at.replace('T',' ').substring(0,19):'-'
+var whSafe=whUrl.replace(/'/g,"\\'")
+tr.innerHTML=`<td>${item.id}</td><td><code style="color:#3b82f6;font-size:12px">${item.fuwuqiportxuhao}</code></td><td><strong>${item.listen_port}</strong></td><td>${domainHtml}</td><td><span style="display:inline-flex;align-items:center;gap:4px;max-width:280px"><code style="background:#0f1117;padding:3px 6px;border-radius:3px;font-size:11px;color:#3b82f6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">${whUrl.replace(/&/g,'&amp;')}</code><button class="btn-ghost" style="flex-shrink:0;font-size:11px" onclick="copyText('${whSafe}')" title="复制 Webhook">复制</button></span></td><td><span style="color:#6b7280;font-size:11px">${target}</span>${tipHtml}</td><td style="font-size:11px;color:#9ca3af" class="${isAdmin?'':'hidden-owner'}">${owner}</td><td style="white-space:nowrap"><span class="badge ${scheme==='https'?'badge-on':'badge-off'}">${scheme}</span> <span class="badge ${method==='308'?"badge-on":"badge-off"}">${method}${cacheInfo?' '+cacheInfo:''}</span>${isAdmin?` <span class="badge ${item.proxy_mode?'badge-info':'badge-secondary'}">${item.proxy_mode?'代理':'重定向'}</span>`:''}</td><td><span class="badge ${badgeCls}">${status}</span></td><td style="color:#6b7280;font-size:11px;white-space:nowrap">${updatedAt}</td><td class="actions">${ownRule?`<button class="btn btn-sm ${en?'btn-outline':'btn-success'}" onclick="toggleRule(${item.id})" title="${en?'关闭':'开启'}">${en?'关':'开'}</button><button class="btn btn-sm btn-ghost" onclick="editRule(${item.id})" title="编辑">&#9998;</button><button class="btn btn-sm btn-ghost" style="color:#ef4444" onclick="deleteRule(${item.id})" title="删除">&#10005;</button>`:'<span style="color:#6b7280;font-size:11px">-</span>'}</td>`
 tbody.appendChild(tr)
 })
 }
